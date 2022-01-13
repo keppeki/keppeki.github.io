@@ -88,13 +88,13 @@ function drawMembers(member, members, num) {
 }
 
 const first = document.getElementById('first');
-const firsts = getCsv('csv/members_2020_1.csv');
+const firsts = getCsv('csv/members_2021_1.csv');
 const second = document.getElementById('second');
-const seconds = getCsv('csv/members_2020_2.csv');
+const seconds = getCsv('csv/members_2021_2.csv');
 const third = document.getElementById('third');
-const thirds = getCsv('csv/members_2020_3.csv');
+const thirds = getCsv('csv/members_2021_3.csv');
 const fourth = document.getElementById('fourth');
-const fourths = getCsv('csv/members_2020_4.csv');
+const fourths = getCsv('csv/members_2021_4.csv');
 drawMembers(first, firsts, 1);
 drawMembers(second, seconds, 2);
 drawMembers(third, thirds, 3);
