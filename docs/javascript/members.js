@@ -34,7 +34,7 @@ function getCsv(url){
 // 要素にcolクラスを追加
 function colConfig(col){
   col.classList.add("col-sm-6");
-  col.classList.add("col-md-4");
+  col.classList.add("col-md-6");
   col.classList.add("col-lg-3");
 }
 
