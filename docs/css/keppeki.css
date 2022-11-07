@@ -23,6 +23,14 @@ h2 {
   border-bottom: dashed 0.1rem white;
 }
 
+dt{
+  color:#D0D0D0;
+}
+
+dd{
+  color:#FFFFFF;
+}
+
 
 
 
@@ -163,7 +171,3 @@ nav {
 	align-items: center;
 	justify-content: center;
 }
-
-
-
-
