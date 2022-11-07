@@ -33,14 +33,14 @@ function getCsv(url){
 
 // 要素にcolクラスを追加
 function colConfig(col){
-  col.classList.add("col-sm-2");
-  col.classList.add("col-md-3");
-  col.classList.add("col-lg-4");
+  col.classList.add("col-sm-6");
+  col.classList.add("col-md-4");
+  col.classList.add("col-lg-3");
 }
 
 // member: 各回生の紹介を記述する要素
 // members: 各回生の紹介内容の2次元配列
-// num: 回生の番号
+// num: 何回生か
 // 紹介を描画する
 function drawMembers(member, members, num) {
   for (var i = 0; i < members.length; i++) {
