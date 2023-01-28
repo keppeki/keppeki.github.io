@@ -21,12 +21,13 @@ function getCsv(url){
     //","ごとに配列化
     res[i] = arr[i].split(',');
 
-    for(var i2 = 0; i2 < res[i].length; i2++){
+    /*for(var i2 = 0; i2 < res[i].length; i2++){
       //数字の場合は「"」を削除
       if(res[i][i2].match(/\-?\d+(.\d+)?(e[\+\-]d+)?/)){
         res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
       }
-    }
+    }*/
+
   }
   return res;
 }
