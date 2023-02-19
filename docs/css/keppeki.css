@@ -23,6 +23,10 @@ h2 {
   border-bottom: dashed 0.1rem white;
 }
 
+h4{
+  text-align:center;
+}
+
 dt{
   color:#D0D0D0;
 }
@@ -31,7 +35,9 @@ dd{
   color:#FFFFFF;
 }
 
-
+a{
+  color:inherit;
+}
 
 
 nav {
@@ -170,4 +176,48 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.detail-title{
+  color: white;
+  font-size: 3.2rem;
+}
+
+.detail-author{
+  color:white;
+  font-size:2.0rem;
+  text-align: right;
+}
+
+.detail-image{
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width:50%;
+}
+
+.detail-abstract{
+  text-align:center;
+  font-size:1.2rem;
+}
+
+.detail-contents{
+  text-align: center;
+  font-size:1.0rem;
+  color:white;
+}
+
+.detail-link{
+  color:#D0D0D0;
+  font-size:1.2rem;
+}
+
+.detail-actors{
+  text-align:center;
+  font-size:1.2rem;
+}
+
+.detail-line{
+  color:#FFFFFF;
+  size:5px;
 }
