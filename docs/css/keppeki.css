@@ -40,7 +40,7 @@ a{
 }
 
 a:hover {
-  color: skyblue;
+  color: #FFFFFF;
   font-weight: bold;
 }
 
@@ -213,6 +213,20 @@ nav {
 .detail-link{
   color:#D0D0D0;
   font-size:1.2rem;
+}
+
+.links{
+  color:#00D0FF;
+  fonot-size:1.0rem;
+}
+
+.links:hover{
+  color:#FFFFFF;
+  font-weight:bold;
+}
+
+.links:visited{
+  color:#D085FF;
 }
 
 .detail-actors{
