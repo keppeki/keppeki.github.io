@@ -162,6 +162,8 @@ nav {
   padding: 1rem 0rem 1rem 0rem;
 }
 
+
+
 #footer-copyright {
   height: 3rem;
   margin: 2rem auto 1rem auto;
@@ -217,7 +219,7 @@ nav {
 
 .links{
   color:#00D0FF;
-  fonot-size:1.0rem;
+  font-size:1.0rem;
 }
 
 .links:hover{
