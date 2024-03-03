@@ -84,18 +84,19 @@ function drawMembers(member, members, num) {
                          + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
                          + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
                          + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
-                         + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>';
+                         + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
+                         + '<dd><a href="' + members[i][9] + '" target="_blank">最新情報</dd>';
   }
 }
 
 const first = document.getElementById('first');
-const firsts = getCsv('csv/members_2022_30.csv');
+const firsts = getCsv('csv/members_2023_31.csv');
 const second = document.getElementById('second');
-const seconds = getCsv('csv/members_2022_29.csv');
+const seconds = getCsv('csv/members_2023_30.csv');
 const third = document.getElementById('third');
-const thirds = getCsv('csv/members_2022_28.csv');
+const thirds = getCsv('csv/members_2023_29.csv');
 const fourth = document.getElementById('fourth');
-const fourths = getCsv('csv/members_2022_27.csv');
+const fourths = getCsv('csv/members_2023_28.csv');
 drawMembers(first, firsts, 1);
 drawMembers(second, seconds, 2);
 drawMembers(third, thirds, 3);
