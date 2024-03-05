@@ -67,7 +67,7 @@ function drawMembers(member, members, num) {
     // 画像を入れる
     const p = document.createElement("p");
     const image = col.appendChild(p);
-    image.innerHTML = '<image src="./images/members/' + members[i][0]
+    image.innerHTML = '<image src="./images/members2023/' + members[i][0]
                        + '.jpg" alt="" style="width:50%;" class="img-fluid"></image>';
     // 名前を入れる
     const span = document.createElement("span");
@@ -85,7 +85,7 @@ function drawMembers(member, members, num) {
                          + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
                          + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
                          + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
-                         + '<dd><a href="' + members[i][9] + '" target="_blank">最新情報</dd>';
+                         + '<dd><a href="' + members[i][9] + ' " target="_blank">最新情報(SNS)</dd>';
   }
 }
 
