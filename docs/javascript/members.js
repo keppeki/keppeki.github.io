@@ -11,6 +11,7 @@ function getCsv(url){
 
   //改行ごとに配列化
   var arr = txt.responseText.split('\n');
+  var cnumber = txt.responseText.split('\n');
 
   //1次元配列を2次元配列に変換
   var res = [];
@@ -27,6 +28,7 @@ function getCsv(url){
         res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
       }
     }*/
+    cnumber += 1;
 
   }
   return res;
@@ -67,7 +69,7 @@ function drawMembers(member, members, num) {
     // 画像を入れる
     const p = document.createElement("p");
     const image = col.appendChild(p);
-    image.innerHTML = '<image src="./images/members2023/' + members[i][0]
+    image.innerHTML = '<image src="./images/members/' + members[i][0]
                        + '.jpg" alt="" style="width:50%;" class="img-fluid"></image>';
     // 名前を入れる
     const span = document.createElement("span");
@@ -75,10 +77,20 @@ function drawMembers(member, members, num) {
     name.style = 'font-style: oblique; font-size:120%; border-bottom: dashed 0.1rem white;'
     name.innerHTML = members[i][1] + '<br>';
     // プロフィールを入れる
+    
     const dl = document.createElement("dl");
     const content = col.appendChild(dl);
     content.class = 'dl-horizontal'
-    content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
+    if(cnumber<=8){
+      content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
+                         + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
+                         + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
+                         + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
+                         + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
+                         + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
+                         + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
+    }else if(cnumber>8){
+      content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                          + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                          + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
                          + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
@@ -86,17 +98,19 @@ function drawMembers(member, members, num) {
                          + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
                          + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
                          + '<dd><a href="' + members[i][9] + ' " target="_blank">最新情報(SNS)</dd>';
+    
+    }
   }
 }
 
 const first = document.getElementById('first');
-const firsts = getCsv('csv/members_2023_31.csv');
+const firsts = getCsv('csv/members_2022_30.csv');
 const second = document.getElementById('second');
-const seconds = getCsv('csv/members_2023_30.csv');
+const seconds = getCsv('csv/members_2022_29.csv');
 const third = document.getElementById('third');
-const thirds = getCsv('csv/members_2023_29.csv');
+const thirds = getCsv('csv/members_2022_28.csv');
 const fourth = document.getElementById('fourth');
-const fourths = getCsv('csv/members_2023_28.csv');
+const fourths = getCsv('csv/members_2022_27.csv');
 drawMembers(first, firsts, 1);
 drawMembers(second, seconds, 2);
 drawMembers(third, thirds, 3);
