@@ -11,7 +11,6 @@ function getCsv(url){
 
   //改行ごとに配列化
   var arr = txt.responseText.split('\n');
-  var cnumber = txt.responseText.split('\n');
 
   //1次元配列を2次元配列に変換
   var res = [];
@@ -28,7 +27,7 @@ function getCsv(url){
         res[i][i2] = parseFloat(res[i][i2].replace('"', ''));
       }
     }*/
-    cnumber += 1;
+    
 
   }
   return res;
@@ -81,15 +80,15 @@ function drawMembers(member, members, num) {
     const dl = document.createElement("dl");
     const content = col.appendChild(dl);
     content.class = 'dl-horizontal'
-    if(cnumber<=8){
+    if(res[i].length<=8){
       content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                          + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                          + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
                          + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
                          + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
                          + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
-                         + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
-    }else if(cnumber>8){
+                         + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>';
+    }else{
       content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                          + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                          + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
