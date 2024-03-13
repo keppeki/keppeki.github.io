@@ -80,7 +80,7 @@ function drawMembers(member, members, num) {
     const dl = document.createElement("dl");
     const content = col.appendChild(dl);
     content.class = 'dl-horizontal'
-    if(res[i].length<=8){
+    if(members[i].length<=8){
       content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                          + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                          + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
