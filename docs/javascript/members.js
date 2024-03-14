@@ -68,7 +68,7 @@ function drawMembers(member, members, num) {
     // 画像を入れる
     const p = document.createElement("p");
     const image = col.appendChild(p);
-    image.innerHTML = '<image src="./images/members/' + members[i][0]
+    image.innerHTML = '<image src="./images/members2023/' + members[i][0]
                        + '.jpg" alt="" style="width:50%;" class="img-fluid"></image>';
     // 名前を入れる
     const span = document.createElement("span");
