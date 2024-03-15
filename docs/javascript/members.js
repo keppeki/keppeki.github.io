@@ -88,7 +88,7 @@ function drawMembers(member, members, num) {
                       + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
                       + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
                       + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>';
-    }if (menbers[i].length>9) {
+    }if (members[i].length>9) {
     content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                       + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                       + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
