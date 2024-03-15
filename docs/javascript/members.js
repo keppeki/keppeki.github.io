@@ -80,21 +80,36 @@ function drawMembers(member, members, num) {
     const dl = document.createElement("dl");
     const content = col.appendChild(dl);
     content.class = 'dl-horizontal'
+    if(members[i].length<=9){
     content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
                       + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
                       + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
                       + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
                       + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
                       + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
-                       + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
-                       if(members[i].length>8){
-                         + '<dd><a href="' + members[i][9] + ' " target="_blank">最新情報(SNS)</dd>'
-                         if(members[i].length>9){
-                          + '<dd><a href="' + members[i][10] + ' " target="_blank">最新情報(SNS)</dd>'
+                      + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>';
+    }if (menbers[i].length>9) {
+    content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
+                      + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
+                      + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
+                      + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
+                      + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
+                      + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
+                      + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
+                      + '<dd><a href="' + members[i][9] + ' " target="_blank">最新情報(X)</dd>';
+    }if(members[i].length>10){
+       content.innerHTML = '<dt>あだ名</dt><dd>' + members[i][2] + '</dd>'
+                      + '<dt>役職</dt><dd>' + members[i][3] + '</dd>'
+                      + '<dt>所属</dt><dd>' + members[i][4] + '</dd>'
+                      + '<dt>趣味・特技</dt><dd>' + members[i][5] + '</dd>'
+                      + '<dt>好きなもの</dt><dd>' + members[i][6] + '</dd>'
+                      + '<dt>嫌いなもの</dt><dd>' + members[i][7] + '</dd>'
+                      + '<dt>ひとこと</dt><dd>' + members[i][8] + '</dd>'
+                      + '<dd><a href="' + members[i][9] + ' " target="_blank">最新情報(X)</dd>'
+                      + '<dd><a href="' + members[i][10] + ' " target="_blank">最新情報(instagram)</dd>';
                      }
-                    };
+    }
   }
-}
 
 const first = document.getElementById('first');
 const firsts = getCsv('csv/members_2023_31.csv');
