@@ -68,7 +68,7 @@ function drawMembers(member, members, num) {
     // 画像を入れる
     const p = document.createElement("p");
     const image = col.appendChild(p);
-    image.innerHTML = '<image src="./images/members2023/' + members[i][0]
+    image.innerHTML = '<image src="./images/members2024/' + members[i][0]
                        + '.jpg" alt="" style="width:50%;" class="img-fluid"></image>';
     // 名前を入れる
     const span = document.createElement("span");
@@ -112,13 +112,13 @@ function drawMembers(member, members, num) {
   }
 
 const first = document.getElementById('first');
-const firsts = getCsv('csv/members_2023_31.csv');
+const firsts = getCsv('csv/members_2024_32.csv');
 const second = document.getElementById('second');
-const seconds = getCsv('csv/members_2023_30.csv');
+const seconds = getCsv('csv/members_2024_31.csv');
 const third = document.getElementById('third');
-const thirds = getCsv('csv/members_2023_29.csv');
+const thirds = getCsv('csv/members_2024_30.csv');
 const fourth = document.getElementById('fourth');
-const fourths = getCsv('csv/members_2023_28.csv');
+const fourths = getCsv('csv/members_2024_29.csv');
 drawMembers(first, firsts, 1);
 drawMembers(second, seconds, 2);
 drawMembers(third, thirds, 3);
