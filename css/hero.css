@@ -1,0 +1,110 @@
+/* ヒーロー（トップ帯） */
+.hero {
+  position: relative;
+  color: #fff;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+/* 背景スライド共通 */
+.hero .hero-slides,
+.hero .hero-slides .slide { position: absolute; inset: 0; }
+.hero .hero-slides { z-index: 0; }
+.hero .hero-slides .slide {
+  background-size: cover; background-position: center;
+  opacity: 0; animation: heroFade 32s infinite; /* 8枚×4s 間隔 */
+  will-change: opacity;
+}
+
+/* 3枚・6秒間隔でディレイ */
+.hero .hero-slides .slide:nth-child(1) { animation-delay: 0s; }
+.hero .hero-slides .slide:nth-child(2) { animation-delay: 6s; }
+.hero .hero-slides .slide:nth-child(3) { animation-delay: 12s; }
+.hero .hero-slides .slide:nth-child(4) { animation-delay: 18s; }
+.hero .hero-slides .slide:nth-child(5) { animation-delay: 24s; }
+.hero .hero-slides .slide:nth-child(6) { animation-delay: 30s; }
+.hero .hero-slides .slide:nth-child(7) { animation-delay: 36s; }
+.hero .hero-slides .slide:nth-child(8) { animation-delay: 42s; }
+
+/* クロスフェードのキーフレーム */
+@keyframes heroFade {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }  /* フェードイン */
+  30%  { opacity: 1; }  /* 表示維持 */
+  35%  { opacity: 0; }  /* フェードアウト */
+  100% { opacity: 0; }
+}
+
+/* === 以下は主にheroの赤バックレイヤーのオンオフに関わるポイント===
+   初期状態：オーバーレイは非表示（opacity:0）
+   スクロールで .overlay-visible が付与されたら表示（opacity:1, 短いトランジション）
+*/
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(175,29,36,.65) 0%, rgba(213,43,52,.65) 100%); /* brandカラー */
+  opacity: 0;                     /* ← 初期は被せない */
+  transition: opacity 0.5s ease-in-out;  /* ← 短いフェード */
+  z-index: 1; pointer-events: none;
+}
+.hero.overlay-visible::before { opacity: 1; } /* ← スクロールで被せる */
+
+/* テキストは前面に */
+.hero > .container { position: relative; z-index: 2; }
+.hero h1 { font-weight: 800; letter-spacing: .02em; }
+.hero p.lead { opacity: .95; }
+
+/* モーション軽減（OS設定） */
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-slides .slide { animation: none; }
+  .hero .hero-slides .slide:nth-child(1) { opacity: 1; }
+  .hero::before { transition: none; }
+}
+
+/* テキスト/ボタンのフェード（最上端では薄く） */
+.hero .hero-content {
+  transition:
+    opacity 0.9s cubic-bezier(0.45, 0, 0.15, 1),
+    transform 0.9s cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+/* 最上端（＝overlayなし）では薄く＆ほんのり沈める */
+.hero:not(.overlay-visible) .hero-content {
+  opacity: .35;                 /* うっすら */
+  transform: translateY(4px);   /* ごく控えめな沈み（好みで0〜6px） */
+}
+
+/* スクロール後（＝overlay可視）で通常表示 */
+.hero.overlay-visible .hero-content {
+  opacity: 1;
+  transform: none;
+}
+
+/* 視認性を少し補助したいなら（任意）：フォーカス/ホバー時は即時くっきり */
+.hero:not(.overlay-visible) .hero-content a:focus,
+.hero:not(.overlay-visible) .hero-content a:hover {
+  opacity: 1;
+  transition-duration: .2s;
+}
+
+
+
+/*レガシーヒーロー
+*/
+ /* ヒーロー（トップ帯） 
+ .hero {
+     background: linear-gradient(135deg, #af1d24 0%, #d52b34 100%),
+         url("./images/hero.jpg") center/cover no-repeat;
+     color: #fff;
+     padding: 6rem 0;
+ }
+
+ .hero h1 {
+     font-weight: 800;
+     letter-spacing: .02em;
+ }
+
+ .hero p.lead {
+     opacity: .95;
+ }
+*/
