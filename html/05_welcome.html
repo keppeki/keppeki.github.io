@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>劇団ケッペキ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 (CSSのみ) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/hero.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ナビゲーション -->
+    <nav class="navbar navbar-expand-lg bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">劇団ケッペキ</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="メニューを開く">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="mainNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.html">ホーム</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="01_nextstage.html">次回公演</a></li>
+                    <li class="nav-item"><a class="nav-link" href="02_about.html">劇団紹介</a></li>
+                    <li class="nav-item"><a class="nav-link" href="03_history.html">過去公演</a></li>
+                    <li class="nav-item"><a class="nav-link" href="04_members.html">団員紹介</a></li>
+                    <li class="nav-item"><a class="nav-link" href="05_welcome.html">入団をお考えの方へ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="06_contact.html">お問い合わせ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="07_links.html">リンク</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header brand">
+        <div class="container text-center mt-5">
+            <h1 class="page-title display-5">入団をお考えの方へ</h1>
+            <p class="lead">Join Us</p>
+        </div>
+    </header>
+
+    <!-- 劇団紹介（ダイジェスト） -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">ご挨拶</h2>
+
+            <p>劇団ケッペキは京大公認の演劇サークルです！
+                団員は100人ほどで、京都大学以外からも多くの大学の学生が参加しています。
+                大学一回生でなくても入団できます。また、高校までは未経験という状況で入団した人も沢山います。
+                年に5～10回公演を行っていますが、決まった時期に公演を必ず行うのではなく、 すべての団員が公演を企画することができるプロデュース制を取っています。
+                なので劇団固有のカラーにとらわれない、自由なお芝居ができます！</p>
+            <p>劇団ケッペキでの活動は、きわめて多岐にわたります。役者や脚本家、演出家はもちろんのこと、舞台セットを作ったり、芝居に音楽や照明をのせたり、
+                衣装を用意したり、公演の宣伝を行ったり、映像を投影したり……と様々なことができます。 発揮できるスキルや身につくスキルは無限大で、あなたの活躍できる場所がここには必ずあります。
+                あなたも一緒に、お芝居を作りましょう！</p>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">入団する</h2>
+
+            <p> 入団をご希望の方は、下記のメールアドレスまでご一報ください。<br>
+                g.keppeki[@]gmail.com ([@]を@に変えてください)</p>
+        </div>
+
+        </div>
+    </section>
+
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="row gy-3 align-items-center">
+                <div class="col-md-6">
+                    <div>© <span id="year"></span> Gekidan Keppeki. All Rights Reserved.</div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a class="" href="html/06_contact.html">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- コピーライト年を自動表示・更新 -->
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+
+</html>

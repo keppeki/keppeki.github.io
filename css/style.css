@@ -1,0 +1,167 @@
+ :root {
+     --brand: #af1d24;
+     /* テーマカラー（赤）ケッペキレッド */
+     --ink: #111;
+     /* 文字色 */
+     --paper: #fff;
+     /* 背景 */
+     --muted: #6c757d;
+     /* サブ文字 */
+ }
+
+ html,
+ body {
+     height: 100%;
+     background: var(--paper);
+     color: var(--ink);
+ }
+
+
+ a {
+     color: var(--brand);
+     text-decoration: none;
+ }
+
+ a:hover {
+     text-decoration: underline;
+ }
+
+
+
+ /* セクション間の余白を統一 */
+ .section {
+     padding: 3rem 0;
+ }
+
+ .section-title {
+     font-weight: 700;
+     margin-bottom: 1.25rem;
+     border-left: .4rem solid var(--brand);
+     padding-left: .6rem;
+ }
+
+ .section img {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+ }
+
+ /* カードの軽い装飾 */
+ .soft-card {
+     border: 1px solid rgba(0, 0, 0, .06);
+     border-radius: 1rem;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
+ }
+
+ /* リスト */
+ .news-list li {
+     margin-bottom: .75rem;
+ }
+
+ .news-list a {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     text-decoration: none;
+     color: var(--ink);
+     padding: .5rem .25rem;
+     border-bottom: 1px solid rgba(0, 0, 0, .05);
+     transition: all .2s ease;
+ }
+
+ .news-list a:hover {
+     background: rgba(175, 29, 36, .05);
+     /*ニュースにカーソルを置くと、brand色（ケッペキレッド）の淡い背景 に*/
+     color: var(--brand);
+ }
+
+ .news-date {
+     flex: 0 0 6rem;
+     /* 固定幅で日付が揃う */
+     font-size: .9rem;
+     color: var(--muted);
+ }
+
+ .news-title {
+     flex: 1;
+     font-weight: 500;
+ }
+
+ .news-arrow {
+     opacity: 0;
+     transform: translateX(-5px);
+     transition: all .2s ease;
+ }
+
+ .news-list a:hover .news-arrow {
+     opacity: 1;
+     transform: translateX(0);
+ }
+
+ /*次回公演欄、ビラの演出関連*/
+
+ /* 画像がratioにピタッと収まるように */
+ .flyer-card .ratio>img,
+ .flyer-card .ratio>.flyer-img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     /* 切り抜いて収める（縦横比を保ったまま）*/
+ }
+
+ /* ★スマホ（lg未満）で“重ねて小さく表示” */
+ @media (max-width: 991.98px) {
+     .stacked {
+         position: relative;
+     }
+
+     /* 情報カードは通常表示 */
+     .stacked .info-card {
+         position: relative;
+         z-index: 2;
+     }
+
+     /* フライヤーカード：上に少し重ね、横幅も抑える */
+     .stacked .flyer-card {
+         position: relative;
+         z-index: 3;
+         /* ここで重なりを作る：上に被せるためのマイナス余白 */
+         margin-top: -2.25rem;
+
+         /* スマホで大きくなりすぎないように最大幅を制限 */
+         max-width: 340px;
+         margin-left: auto;
+         margin-right: auto;
+
+         /* 重なり感を強調（任意） */
+         box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
+         border-radius: 1rem;
+     }
+
+     /* カード内の角丸を滑らかに（任意） */
+     .stacked .flyer-card .ratio {
+         border-radius: 0.75rem;
+     }
+ }
+
+ /* ★PC（lg以上）は従来どおり横並びで、重ね演出をリセット */
+ @media (min-width: 992px) {
+     .stacked .flyer-card {
+         margin-top: 0;
+         max-width: none;
+         box-shadow: none;
+         /* 影はsoft-card既定だけに */
+     }
+ }
+
+
+ /* フッター */
+ footer {
+     border-top: 1px solid rgba(0, 0, 0, .08);
+     padding: 2rem 0;
+     margin-top: 2rem;
+     font-size: .95rem;
+     color: var(--muted);
+     background-color: #af1d2447;
+
+ }

@@ -1,0 +1,185 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.section .container {
+  width: 100%;
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.section-title {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* 日付リスト */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #eee;
+  padding: 0.4rem 0;
+}
+
+.schedule-date {
+  font-weight: 600;
+  min-width: 10rem;
+  text-align: left;
+}
+
+.schedule-time {
+  flex: 1;
+  text-align: right;
+  color: #555;
+}
+
+/* 料金の整列 */
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.price-list .label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.price-list .value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 注意書き */
+.note-list {
+  padding-left: 1.1rem;
+}
+
+.note-list li + li {
+  margin-top: 0.25rem;
+}
+
+/* カード */
+.soft-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* スマホ対応 */
+@media (max-width: 576px) {
+  .schedule-date {
+    min-width: auto;
+    font-weight: 600;
+  }
+
+  .schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-time {
+    text-align: left;
+  }
+}
+
+/* ===== 日付・時間：テーブル無しで左揃え整列 ===== */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;   /* 左：日付は可変、右：時間は残り幅 */
+  column-gap: 1rem;
+  row-gap: .35rem;
+  text-align: left;                  /* 両方左寄せ */
+  justify-content: center;     /* グリッド自体を中央に */
+  max-width: 260px;            /* 幅を制限（好みで調整） */
+  margin-inline: auto; 
+}
+.schedule-grid .date { font-weight: 600; }
+.schedule-grid .time { color: #555; }
+
+/* 小画面（スマホ）時は縦積みにして崩れを根本解消 */
+@media (max-width: 576px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;  /* 1カラムに */
+    justify-content: stretch;     /* 中央寄せを解除＝幅いっぱいに */
+    max-width: none;              /* 幅制限を解除 */
+    margin-inline: 0;           /* 余白もリセット（親に準拠） */
+  }
+ 
+  .schedule-grid .date {
+    font-weight: 700;  
+    text-align: center;           /* 見出し感を少し強める（任意） */
+  }
+  .schedule-grid .time {
+    margin-left: 0;
+    width: 100%;     
+    text-align: center;
+    color: #555;
+  }
+}
+
+/* ===== フライヤー（表⇄裏 切替） ===== */
+.flyer {
+  position: relative;
+  width: 100%;
+  max-width: 420px;        /* 好みで調整。例：380〜480px */
+  margin: 0 auto;
+  aspect-ratio: 707 / 1000;/* 一般的なB5/B4縦の比率に近い */
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  overflow: hidden;
+  cursor: pointer;
+}
+.flyer img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: opacity .35s cubic-bezier(0.4,0,0.2,1);
+}
+.flyer .front { opacity: 1; }
+.flyer .back  { opacity: 0; }
+.flyer.is-back .front { opacity: 0; }
+.flyer.is-back .back  { opacity: 1; }
+
+/* ヒントテキスト */
+.flyer .hint {
+  position: absolute; left: 0; right: 0; bottom: 8px;
+  text-align: center; font-size: .8rem; color: rgba(255,255,255,.85);
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+  pointer-events: none;
+}
+
+/* キーボード操作のフォーカス可視化 */
+.flyer:focus { outline: 3px solid rgba(213,43,52,.35); outline-offset: 3px; }
+
+/* ===== 価格・注意は既存のまま（必要なら再掲） ===== */
+.price-list { list-style:none; padding:0; margin:0; display:flex; gap:1rem; flex-wrap:wrap; justify-content: center;}
+.price-list .label { font-weight:600; margin-right:.25rem; }
+.price-list .value { font-variant-numeric: tabular-nums; }
+.note-list { padding-left:1.1rem; }
+.note-list li + li { margin-top:.25rem; }
+
+.note-list{
+  padding-left: 40px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.note-list li {
+  margin: 0 auto;
+}
