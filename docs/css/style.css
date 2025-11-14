@@ -22,12 +22,6 @@
      text-decoration: none;
  }
 
- a:hover {
-     text-decoration: underline;
- }
-
-
-
  /* セクション間の余白を統一 */
  .section {
      padding: 3rem 0;
