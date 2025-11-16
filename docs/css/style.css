@@ -1,4 +1,4 @@
- :root {
+:root {
      --brand: #af1d24;
      /* テーマカラー（赤）ケッペキレッド */
      --ink: #111;
@@ -21,12 +21,6 @@
      color: var(--brand);
      text-decoration: none;
  }
-
- a:hover {
-     text-decoration: underline;
- }
-
-
 
  /* セクション間の余白を統一 */
  .section {
@@ -165,3 +159,37 @@
      background-color: #af1d2447;
 
  }
+
+/* SNS button styles */
+.social-buttons { gap: 1rem; }
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+  font-size: 1.25rem;
+}
+.btn-social:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.16); }
+
+.btn-social-dark { background: #0f1720; }
+.btn-social-instagram {
+  background: linear-gradient(45deg,#f58529 0,#dd2a7b 50%,#515bd4 100%);
+}
+
+/* Note の画像リンク */
+.note-image-link { display:inline-block; line-height:0; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.12); transition:transform .12s ease; }
+.note-image-link:hover { transform: translateY(-4px); box-shadow:0 10px 22px rgba(0,0,0,0.16); }
+.note-image { display:block; width:72px; height:56px; object-fit:cover; }
+
+/* スマホ調整 */
+@media (max-width:576px){
+  .btn-social{ width:48px; height:48px; font-size:1rem; border-radius:10px; }
+  .note-image{ width:60px; height:46px; }
+}

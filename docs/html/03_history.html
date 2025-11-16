@@ -2,172 +2,162 @@
 <html lang="ja">
 
 <head>
-    <meta charset="utf-8">
-    <title>劇団ケッペキ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap 5 (CSSのみ) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/slideshow.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>劇団ケッペキ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 (CSSのみ) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/slideshow.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ナビゲーション -->
-    <nav class="navbar navbar-expand-lg bg-light border-bottom">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="../index.html">劇団ケッペキ</a>
+  <!-- ナビゲーション -->
+  <nav class="navbar navbar-expand-lg bg-light border-bottom">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html">劇団ケッペキ</a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                aria-controls="mainNav" aria-expanded="false" aria-label="メニューを開く">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div id="mainNav" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.html">ホーム</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="01_nextstage.html">次回公演</a></li>
-                    <li class="nav-item"><a class="nav-link" href="02_about.html">劇団紹介</a></li>
-                    <li class="nav-item"><a class="nav-link" href="03_history.html">過去公演</a></li>
-                    <li class="nav-item"><a class="nav-link" href="04_members.html">団員紹介</a></li>
-                    <li class="nav-item"><a class="nav-link" href="05_welcome.html">入団をお考えの方へ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="06_contact.html">お問い合わせ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="07_links.html">リンク</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <div id="mainNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="../index.html">ホーム</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="01_nextstage.html">次回公演</a></li>
+          <li class="nav-item"><a class="nav-link" href="02_about.html">劇団紹介</a></li>
+          <li class="nav-item"><a class="nav-link" href="03_history.html">過去公演</a></li>
+          <li class="nav-item"><a class="nav-link" href="04_members.html">団員紹介</a></li>
+          <li class="nav-item"><a class="nav-link" href="05_welcome.html">入団をお考えの方へ</a></li>
+          <li class="nav-item"><a class="nav-link" href="06_contact.html">お問い合わせ</a></li>
+          <li class="nav-item"><a class="nav-link" href="07_links.html">リンク</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <header class="page-header brand">
-        <div class="container text-center mt-5">
-            <h1 class="page-title display-5">過去公演</h1>
-            <p class="lead">Past Performances</p>
-        </div>
-    </header>
+  <header class="page-header brand">
+    <div class="container text-center mt-5">
+      <h1 class="page-title display-5">過去公演</h1>
+      <p class="lead">Past Performances</p>
+    </div>
+  </header>
 
-
-<!-- 過去公演（ダイジェスト） -->
-
+  <!-- ここから複数あった手続き的な繰り返しブロックを削除し、テンプレート+出力領域に置き換え -->
   <section class="section bg-light">
     <div class="container">
-      <h2 class="section-title">2025年度</h2>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            まだノリノリのナツナツフリーライド公演
-            <h3 class="h5 mb-3">『まだ始まらぬ葬儀』</h3>
-            <p>作・演出｜テイ</p>
-            <p class="mb-1">日程｜2025年9月26日（日）〜9月28日(月)</p>
-            <p class="mb-3">会場｜京都大学学生集会所地下２階 舞踏・民舞共用ホール</p>
-          </div>
+      <!-- 年ブロックのテンプレート -->
+      <template id="history-year-tpl">
+        <div class="year-block">
+          <h2 class="section-title year-title"></h2>
+          <div class="year-entries"></div>
         </div>
+      </template>
 
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 3 / 4;">
-              <img src="../images/02.main_flyer/2025/summer/front.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
+      <!-- 個別エントリ（公演1件）のテンプレート -->
+      <template id="history-entry-tpl">
+        <div class="row g-4 stacked entry">
+          <div class="col-12 col-lg-7">
+            <div class="p-4 soft-card h-100 info-card">
+              <div class="entry-intro"></div>
+              <h3 class="h5 mb-3 entry-title"></h3>
+              <div class="entry-author"></div>
+              <p class="mb-1 entry-date"></p>
+              <p class="mb-3 entry-place"></p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5">
+            <div class="soft-card overflow-hidden flyer-card">
+              <div class="ratio" style="aspect-ratio: 210 / 297;">
+                <img class="img-fluid flyer-img entry-img" alt="">
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="my-5"></div>
+      </template>
+      <!-- 出力先 -->
+      <div id="history-root"></div>
 
-      <!--
-      <div class="gs-slideshow" data-autoplay="0">
-      <div class="gs-viewport">
-        <img src="../images/04.archives/2025_summer/1.jpg" alt="2025ゲネ1" data-caption="夏公演 ゲネプロ 1">
-        <img src="../images/04.archives/2025_summer/2.jpeg" alt="2025ゲネ2" data-caption="夏公演 ゲネプロ 2">
-        <img src="../images/04.archives/2025_summer/3.jpeg" alt="2025ゲネ3" data-caption="夏公演 ゲネプロ 3">
-      </div>
-      
+      <noscript>
+        <p>JavaScriptが無効です。有効にしてご覧ください。</p>
+      </noscript>
 
-      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
-      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
+      <!-- 追加: 画像の縦横比に応じて親 .ratio の aspect-ratio を簡易切替 -->
 
-      <div class="gs-dots" aria-label="スライド選択"></div>
-      <p class="gs-caption" aria-live="polite"></p>
-      </div>
 
-      
+  <script>
+  (function(){
+    const TOLERANCE = 0.05; // 1 に対する誤差幅（0.05 = ±5% を正方形と見なす）
+    function adjustImg(img){
+      const w = img.naturalWidth || img.width || 1;
+      const h = img.naturalHeight || img.height || 1;
+      const parent = img.closest('.ratio') || img.parentElement;
+      if(!parent) return;
+      const r = w / h;
+      if(Math.abs(r - 1) <= TOLERANCE){
+        parent.style.aspectRatio = '1 / 1';
+        img.classList.add('is-square'); img.classList.remove('is-landscape','is-portrait');
+      } else if(r > 1){
+        parent.style.aspectRatio = '297 / 210';
+        img.classList.add('is-landscape'); img.classList.remove('is-portrait','is-square');
+      } else {
+        parent.style.aspectRatio = '210 / 297';
+        img.classList.add('is-portrait'); img.classList.remove('is-landscape','is-square');
+      }
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'contain';
+    }
 
-      <div class="my-5"></div>
+    function adjustAll(){
+      document.querySelectorAll('.entry-img').forEach(img=>{
+        if(img.complete) adjustImg(img);
+        else img.addEventListener('load', ()=>adjustImg(img), {once:true});
+      });
+    }
 
-      -->
+    document.addEventListener('DOMContentLoaded', ()=> setTimeout(adjustAll, 50));
 
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            劇団ケッペキ 2025年度新入生歓迎企画 ピチピチ・パチパチ・プラタナス公演
-            <h3 class="h5 mb-3">『いつだって今だもん』</h3>
-            <p>作｜谷川俊太郎　演出｜齊藤瑤平</p>
-            <p class="mb-1">日程｜2025年4月26日（土）〜4月27日(日)</p>
-            <p class="mb-3">会場｜THEATRE E9 KYOTO</p>
-          </div>
-        </div>
+    const root = document.getElementById('history-root');
+    if(root){
+      let timer;
+      const mo = new MutationObserver(()=>{ clearTimeout(timer); timer = setTimeout(adjustAll, 50); });
+      mo.observe(root, { childList: true, subtree: true });
+    }
+  })();
+  </script>
 
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 3 / 4;">
-              <img src="../images/02.main_flyer/2025/sinkan/front.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--
-      <div class="gs-slideshow" data-autoplay="0">
-      <div class="gs-viewport">
-        <img src="../images/04.archives/2025_sinkan/1.jpg" alt="2025ゲネ1" data-caption="新歓公演 ゲネプロ 1">
-        <img src="../images/04.archives/2025_sinkan/2.jpeg" alt="2025ゲネ2" data-caption="新歓公演 ゲネプロ 2">
-        <img src="../images/04.archives/2025_sinkan/3.jpeg" alt="2025ゲネ3" data-caption="新歓公演 ゲネプロ 3">
-      </div>
-      
-
-      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
-      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
-
-      <div class="gs-dots" aria-label="スライド選択"></div>
-      <p class="gs-caption" aria-live="polite"></p>
-      </div>
-
-      <div class="my-5"></div>
-
-      -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     </div>
   </section>
 
-
-
-
-    <!-- フッター -->
-    <footer>
-        <div class="container">
-            <div class="row gy-3 align-items-center">
-                <div class="col-md-6">
-                    <div>© <span id="year"></span> Gekidan Keppeki. All Rights Reserved.</div>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a class="" href="html/06_contact.html">お問い合わせ</a>
-                </div>
-            </div>
+  <!-- フッター -->
+  <footer>
+    <div class="container">
+      <div class="row gy-3 align-items-center">
+        <div class="col-md-6">
+          <div>© <span id="year"></span> Gekidan Keppeki. All Rights Reserved.</div>
         </div>
-    </footer>
+        <div class="col-md-6 text-md-end">
+          <a class="" href="html/06_contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Bootstrap 5 読み込み -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="../javascript/slideshow.js"></script>
-    <!-- コピーライト年を自動表示・更新 -->
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- Bootstrap 5 読み込み -->
+  <script src="../javascript/history-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--<script src="../javascript/slideshow.js"></script>-->
+
+  <!-- コピーライト年を自動表示・更新 -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

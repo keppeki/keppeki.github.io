@@ -1,0 +1,48 @@
+/* SNS button styles */
+.social-buttons { gap: 1rem; }
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;          /* アイコンボタンを大きく */
+  height: 72px;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+  font-size: 2rem;      /* アイコンサイズを大きく */
+}
+.btn-social:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.16); }
+
+.btn-social-dark { background: #0f1720; }
+.btn-social-instagram {
+  background: linear-gradient(45deg,#f58529 0,#dd2a7b 50%,#515bd4 100%);
+}
+
+/* Note の画像リンク（レスポンシブ） */
+.note-image-link {
+  display: inline-block;
+  width: clamp(56px, 12vw, 72px);  /* 最小56px → 最大72px で画面幅に応じて伸縮 */
+  height: clamp(56px, 12vw, 72px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: transform .12s ease;
+}
+.note-image-link:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.16); }
+
+.note-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* 正方形に切り抜き */
+  aspect-ratio: 1 / 1;
+}
+
+/* スマホ調整 */
+@media (max-width: 576px) {
+  .btn-social { width: 56px; height: 56px; font-size: 1.5rem; }
+  .note-image-link { width: clamp(48px, 10vw, 56px); height: clamp(48px, 10vw, 56px); }
+}

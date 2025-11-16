@@ -6,6 +6,19 @@
   overflow: hidden;
 }
 
+.btn-hero {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .btn-hero {
+    margin-right: 1rem;
+    padding: 0.75rem 1.4rem;
+    font-size: 1.25rem;
+  }
+}
+
 /* 背景スライド共通 */
 .hero .hero-slides,
 .hero .hero-slides .slide { position: absolute; inset: 0; }
