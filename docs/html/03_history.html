@@ -46,558 +46,95 @@
     </div>
   </header>
 
-
-  <!-- 過去公演（ダイジェスト） -->
-
+  <!-- ここから複数あった手続き的な繰り返しブロックを削除し、テンプレート+出力領域に置き換え -->
   <section class="section bg-light">
     <div class="container">
-      <h2 class="section-title">2025年度</h2>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            まだノリノリのナツナツフリーライド公演
-            <h3 class="h5 mb-3">『まだ始まらぬ葬儀』</h3>
-            <p>作・演出｜テイ</p>
-            <p class="mb-1">2025年9月26日（日）〜9月28日(月)</p>
-            <p class="mb-3">京都大学学生集会所地下２階 舞踏・民舞共用ホール</p>
-          </div>
+      <!-- 年ブロックのテンプレート -->
+      <template id="history-year-tpl">
+        <div class="year-block">
+          <h2 class="section-title year-title"></h2>
+          <div class="year-entries"></div>
         </div>
+      </template>
 
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2025/summer/front.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
+      <!-- 個別エントリ（公演1件）のテンプレート -->
+      <template id="history-entry-tpl">
+        <div class="row g-4 stacked entry">
+          <div class="col-12 col-lg-7">
+            <div class="p-4 soft-card h-100 info-card">
+              <div class="entry-intro"></div>
+              <h3 class="h5 mb-3 entry-title"></h3>
+              <div class="entry-author"></div>
+              <p class="mb-1 entry-date"></p>
+              <p class="mb-3 entry-place"></p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5">
+            <div class="soft-card overflow-hidden flyer-card">
+              <div class="ratio" style="aspect-ratio: 210 / 297;">
+                <img class="img-fluid flyer-img entry-img" alt="">
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="my-5"></div>
+      </template>
+      <!-- 出力先 -->
+      <div id="history-root"></div>
 
-      <div class="my-5"></div>
+      <noscript>
+        <p>JavaScriptが無効です。有効にしてご覧ください。</p>
+      </noscript>
 
-      <!--
-      <div class="gs-slideshow" data-autoplay="0">
-      <div class="gs-viewport">
-        <img src="../images/04.archives/2025_summer/1.jpg" alt="2025ゲネ1" data-caption="夏公演 ゲネプロ 1">
-        <img src="../images/04.archives/2025_summer/2.jpeg" alt="2025ゲネ2" data-caption="夏公演 ゲネプロ 2">
-        <img src="../images/04.archives/2025_summer/3.jpeg" alt="2025ゲネ3" data-caption="夏公演 ゲネプロ 3">
-      </div>
-      
+      <!-- 追加: 画像の縦横比に応じて親 .ratio の aspect-ratio を簡易切替 -->
 
-      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
-      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
 
-      <div class="gs-dots" aria-label="スライド選択"></div>
-      <p class="gs-caption" aria-live="polite"></p>
-      </div>
+  <script>
+  (function(){
+    const TOLERANCE = 0.05; // 1 に対する誤差幅（0.05 = ±5% を正方形と見なす）
+    function adjustImg(img){
+      const w = img.naturalWidth || img.width || 1;
+      const h = img.naturalHeight || img.height || 1;
+      const parent = img.closest('.ratio') || img.parentElement;
+      if(!parent) return;
+      const r = w / h;
+      if(Math.abs(r - 1) <= TOLERANCE){
+        parent.style.aspectRatio = '1 / 1';
+        img.classList.add('is-square'); img.classList.remove('is-landscape','is-portrait');
+      } else if(r > 1){
+        parent.style.aspectRatio = '297 / 210';
+        img.classList.add('is-landscape'); img.classList.remove('is-portrait','is-square');
+      } else {
+        parent.style.aspectRatio = '210 / 297';
+        img.classList.add('is-portrait'); img.classList.remove('is-landscape','is-square');
+      }
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'contain';
+    }
 
-      -->
+    function adjustAll(){
+      document.querySelectorAll('.entry-img').forEach(img=>{
+        if(img.complete) adjustImg(img);
+        else img.addEventListener('load', ()=>adjustImg(img), {once:true});
+      });
+    }
 
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            2025年度新入生歓迎企画 ピチピチ・パチパチ・プラタナス公演
-            <h3 class="h5 mb-3">『いつだって今だもん』</h3>
-            <p>作｜谷川俊太郎　演出｜齊藤瑤平</p>
-            <p class="mb-1">2025年4月26日（土）〜4月27日(日)</p>
-            <p class="mb-3">THEATRE E9 KYOTO</p>
-          </div>
-        </div>
+    document.addEventListener('DOMContentLoaded', ()=> setTimeout(adjustAll, 50));
 
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2025/sinkan/front.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
+    const root = document.getElementById('history-root');
+    if(root){
+      let timer;
+      const mo = new MutationObserver(()=>{ clearTimeout(timer); timer = setTimeout(adjustAll, 50); });
+      mo.observe(root, { childList: true, subtree: true });
+    }
+  })();
+  </script>
 
-      <div class="my-5"></div>
-
-      <!--
-      <div class="gs-slideshow" data-autoplay="0">
-      <div class="gs-viewport">
-        <img src="../images/04.archives/2025_sinkan/1.jpg" alt="2025ゲネ1" data-caption="新歓公演 ゲネプロ 1">
-        <img src="../images/04.archives/2025_sinkan/2.jpeg" alt="2025ゲネ2" data-caption="新歓公演 ゲネプロ 2">
-        <img src="../images/04.archives/2025_sinkan/3.jpeg" alt="2025ゲネ3" data-caption="新歓公演 ゲネプロ 3">
-      </div>
-      
-
-      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
-      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
-
-      <div class="gs-dots" aria-label="スライド選択"></div>
-      <p class="gs-caption" aria-live="polite"></p>
-      </div>
-
-      -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     </div>
   </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">2024年度</h2>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            2024年度卒業公演
-            <h3 class="h5 mb-3">『狐の森』</h3>
-            <p>脚本｜増井怜史朗　演出｜福田りさ</p>
-            <p class="mb-1">2024年3月8日（土）〜3月9日(月)</p>
-            <p class="mb-3">京都大学西部講堂</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/graduation/kitsune.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            ３２時の朝焼け新人公演
-            <h3 class="h5 mb-3">『空の上のすいかパイ』</h3>
-            <p>脚本・演出｜近藤</p>
-            <p class="mb-1">2024年2月14日（金）〜2月16日(日)</p>
-            <p class="mb-3">京都市東山青少年活動センター 創造活動室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/freshman/suika.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            晩鐘に歩く村のソネット公演
-            <h3 class="h5 mb-3">『柿人』</h3>
-            <p>作・演出｜髙野皓太</p>
-            <p class="mb-1">2024年12月6日（金）〜12月8日(日)</p>
-            <p class="mb-3">THEATRE E9 KYOTO</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/winter/kaki.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            噺の砌公演
-            <h3 class="h5 mb-3">『死神』</h3>
-            <p>脚色・演出｜濱名涼</p>
-            <p class="mb-1">2024年11月22日（金）〜11月23日(土)</p>
-            <p class="mb-3">京都大学吉田南4号館(4共)11教室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/NF/shinigami.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            レースの翼公演
-            <h3 class="h5 mb-3">『でも×2だってでいきたいの!!』</h3>
-            <p>脚本｜吉原有美歩　演出｜渡邉結菜</p>
-            <p class="mb-1">2024年11月2日（土）〜11月4日(月・祝)</p>
-            <p class="mb-3">The side</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/ishou/demodemo.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            気になる夏公演
-            <h3 class="h5 mb-3">『フェイクスピア』</h3>
-            <p>作｜野田秀樹　脚色・演出｜平川学</p>
-            <p class="mb-1">2024年 9月27日(金) ～ 29日(日)</p>
-            <p class="mb-3">京都大学学生集会所地下2階 舞踏・民舞共用ホール</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/summer/fake.jfif
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            京都学生演劇祭2024
-            <h3 class="h5 mb-3">『近づいている』</h3>
-            <p>作・演出｜柳澤祐太</p>
-            <p class="mb-1">2024年 9月9日(月) ～ 14日(土)</p>
-            <p class="mb-3">養正児童公園＜希望の広場＞　野外特設舞台</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/engekisai/chika.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            2024年度新入生歓迎公演
-            <h3 class="h5 mb-3">『↗ヤジルシ』</h3>
-            <p>作｜太田省吾　演出｜井手美唯奈</p>
-            <p class="mb-1">2024年 4月27日(土) ～ 29日(月)</p>
-            <p class="mb-3">THEATRE E9 KYOTO</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2024/sinkan/yaji.jfif
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-
-
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2 class="section-title">2023年度</h2>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            2023年度卒業ユニット公演
-            <h3 class="h5 mb-3">『Stargazer Radio』</h3>
-            <p>脚本: 榮野川文樺　演出: 坂田真依子</p>
-            <p class="mb-1">2024年 3月8日(金) ～ 10日(日)</p>
-            <p class="mb-3">京都大学学生集会所地下2階　舞踏・民舞共用ホール</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 4 / 3;">
-              <img src="../images/02.main_flyer/2023/graduation/radio.jfif
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            ３２時の朝焼け新人公演
-            <h3 class="h5 mb-3">『水下がり』</h3>
-            <p>作: マツリカ(劇団ケッペキ)　演出: 渡邉結奈</p>
-            <p class="mb-1">2024年 2月17日(土), 18日(日)</p>
-            <p class="mb-3">京都市東山青少年活動センター 創造活動室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/freshman/mizu.jfif
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            凍る夏に時は巡るモラトリアム公演
-            <h3 class="h5 mb-3">『サマータイムマシン・ブルース』</h3>
-            <p>原作: 上田誠　脚色・演出: 猪之奥あろ</p>
-            <p class="mb-1">2023年 12月21日(木) ～ 24日(日)</p>
-            <p class="mb-3">京都大学 文学部控室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/winter/timemachine.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            NFユニット公演
-            <h3 class="h5 mb-3">『ちょうちょが飞ぶならば』</h3>
-            <p>脚本・演出: 小沼智佳</p>
-            <p class="mb-1">2023年 11月23日(木) ～ 11月25日(土)</p>
-            <p class="mb-3">京都大学吉田南4号館(4共)11教室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/NF/front.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            秋のよとぎ話公演
-            <h3 class="h5 mb-3">『きみのなかの小宇宙』</h3>
-            <p>脚本: 吉原有美歩　演出: 大田陽彦</p>
-            <p class="mb-1">2023年 10月21日(土), 22日(日)</p>
-            <p class="mb-3">大阪市立芸術創造館</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/yotogi/front.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            眠れぬ瞼を跳ねる羊の晩夏公演
-            <h3 class="h5 mb-3">『SHOT』</h3>
-            <p>作・演出: 増井怜史朗</p>
-            <p class="mb-1">2023年 10月6日(金) ～ 8日(日)</p>
-            <p class="mb-3">京都市東山青少年活動センター 創造活動室</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/summer/shot.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            月華のカルペディエム公演
-            <h3 class="h5 mb-3">『RENT』</h3>
-            <p>脚本/作詞/音楽: Jonathan Larson 訳詞: 吉元由美 演出: RISA</p>
-            <p class="mb-1">2023年 9月30日(土), 10月1日(日)</p>
-            <p class="mb-3">京都大学学生集会所地下2階 舞踏・民舞共用ホール</p>
-            <p class="mb-3"style="text-align: center;">RENT<br>
-<br>
-              Book, Music and Lyrics by Jonathan Larson. Musical Arrangements: Steve Skinner<br>
-<br>
-              Music Supervision and Additional Arrangements: Tim Weil<br>
-<br>
-              Original Concept / Additional Lyrics: Billy Aronson<br>
-<br>
-              RENT was originally produced in New York by New York Theatre Workshop and on Broadway by Jeffrey Seller,
-              Kevin McCollum, Allan S. Gordon and New York Theatre Workshop<br>
-<br>
-              RENT Is presented through special arrangement with Music Theatre International (MTI).<br>
-<br>
-              All authorized performance materials are also supplied by MTI.<br>
-<br>
-              www.mtishows.com<br>
-<br>
-              Inaddition,all releases and press kits MUST indicate the production is licensed by Music Theatre
-              International.</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/carpediem/rent.png
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-      <!-- ★重ね用ラッパ -->
-      <div class="row g-4 stacked">
-        <!-- 情報カード -->
-        <div class="col-12 col-lg-7">
-          <div class="p-4 soft-card h-100 info-card">
-            2023年度新入生歓迎公演
-            <h3 class="h5 mb-3">『THE BEE』</h3>
-            <p>原作: 筒井康隆～『毟りあい』(新潮社)より～<br>
-              共同脚本: 野田秀樹＆Colin Teevan<br>
-              演出: 大田陽彦</p>
-            <p class="mb-1">2023年 6月3日(土), 4日(日)</p>
-            <p class="mb-3">THEATRE E9 KYOTO</p>
-          </div>
-        </div>
-
-        <!-- フライヤーカード -->
-        <div class="col-12 col-lg-5">
-          <div class="soft-card overflow-hidden flyer-card">
-            <div class="ratio" style="aspect-ratio: 210 / 297;">
-              <img src="../images/02.main_flyer/2023/sinkan/TheBee.jpg
-              " alt="過去公演ビラ画像（A4縦）" class="img-fluid flyer-img">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="my-5"></div>
-
-
-    </div>
-  </section>
-
 
   <!-- フッター -->
   <footer>
@@ -614,8 +151,11 @@
   </footer>
 
   <!-- Bootstrap 5 読み込み -->
+  <script src="../javascript/history-data.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../javascript/slideshow.js"></script>
+
+  <!--<script src="../javascript/slideshow.js"></script>-->
+
   <!-- コピーライト年を自動表示・更新 -->
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
