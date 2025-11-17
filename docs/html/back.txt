@@ -1,0 +1,35 @@
+ <!--
+      <div class="gs-slideshow" data-autoplay="0">
+      <div class="gs-viewport">
+        <img src="../images/04.archives/2025_summer/1.jpg" alt="2025ゲネ1" data-caption="夏公演 ゲネプロ 1">
+        <img src="../images/04.archives/2025_summer/2.jpeg" alt="2025ゲネ2" data-caption="夏公演 ゲネプロ 2">
+        <img src="../images/04.archives/2025_summer/3.jpeg" alt="2025ゲネ3" data-caption="夏公演 ゲネプロ 3">
+      </div>
+      
+
+      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
+      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
+
+      <div class="gs-dots" aria-label="スライド選択"></div>
+      <p class="gs-caption" aria-live="polite"></p>
+      </div>
+
+      -->
+
+      <!--
+      <div class="gs-slideshow" data-autoplay="0">
+      <div class="gs-viewport">
+        <img src="../images/04.archives/2025_sinkan/1.jpg" alt="2025ゲネ1" data-caption="新歓公演 ゲネプロ 1">
+        <img src="../images/04.archives/2025_sinkan/2.jpeg" alt="2025ゲネ2" data-caption="新歓公演 ゲネプロ 2">
+        <img src="../images/04.archives/2025_sinkan/3.jpeg" alt="2025ゲネ3" data-caption="新歓公演 ゲネプロ 3">
+      </div>
+      
+
+      <button class="gs-nav gs-prev" aria-label="前の写真">‹</button>
+      <button class="gs-nav gs-next" aria-label="次の写真">›</button>
+
+      <div class="gs-dots" aria-label="スライド選択"></div>
+      <p class="gs-caption" aria-live="polite"></p>
+      </div>
+
+      -->
