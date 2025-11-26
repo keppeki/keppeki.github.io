@@ -4,6 +4,15 @@
     {
       year: "2025年度",
       entries: [
+                {
+          intro: "足を遊ばせる波打ちkiwakiwa公演",
+          title: "『赤鬼』",
+          author: "作 | 野田秀樹 演出｜板垣大稀 脚色 | 叶う園",
+          date: "2025年11月23日（日）〜11月24日(月)",
+          place: "京都大学吉田南４号館11講義室",
+          img: "../images/02.main_flyer/2025/NF/front.jpeg",
+          imgAlt: "過去公演ビラ 2025 NF"
+        },
         {
           intro: "まだノリノリのナツナツフリーライド公演",
           title: "『まだ始まらぬ葬儀』",
