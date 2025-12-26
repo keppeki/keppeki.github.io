@@ -103,6 +103,19 @@
      /* 切り抜いて収める（縦横比を保ったまま）*/
  }
 
+ /* 次回公演が何もない時 */
+ .not_next {
+  color: #888888;
+
+  text-align: center;
+  font-size: 1.5rem;
+
+  margin-top: 40px; 
+  margin-bottom: 40px;
+  
+  letter-spacing: 0.05em;
+}
+
  /* ★スマホ（lg未満）で“重ねて小さく表示” */
  @media (max-width: 991.98px) {
      .stacked {

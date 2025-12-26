@@ -5,6 +5,15 @@
       year: "2025年度",
       entries: [
                 {
+          intro: "地を駆ける群鳥の越冬公演",
+          title: "『船の箱』",
+          author: "作｜小林新  演出｜丸尾雄大",
+          date: "2025年12月19日（金）〜12月21日(日)",
+          place: "京都大学西部講堂",
+          img: "../images/02.main_flyer/2025/winter/front.jpg",
+          imgAlt: "過去公演ビラ 2025 冬"
+        },
+                {
           intro: "足を遊ばせる波打ちkiwakiwa公演",
           title: "『赤鬼』",
           author: "作 | 野田秀樹 演出｜板垣大稀 脚色 | 叶う園",
