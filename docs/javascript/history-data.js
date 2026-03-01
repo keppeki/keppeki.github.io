@@ -10,7 +10,7 @@
           author: "作｜針を撫でる  演出｜どいよしと",
           date: "2026年2月20日（金）〜2月22日(日)",
           place: "京都大学西部講堂",
-          img: "../images/02.main_flyer/2025/sinzin33/front.ppg",
+          img: "../images/02.main_flyer/2025/sinzin33/front.png",
           imgAlt: "過去公演ビラ 2025 新人"
         },
                 {
