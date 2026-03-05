@@ -35,28 +35,35 @@
 
     /* 縦中横 */
     .tcy { text-combine-upright: all; }
-
+/* 
     #logo {
     filter: contrast(0.3); 
     opacity: 0.5;
-    /* filter: url(#rough-fade); */
-    /* mask-image: linear-gradient(
+    filter: url(#rough-fade);
+    mask-image: linear-gradient(
     to bottom,
     black 0%,
     black 70%,
     transparent 100%
-  ); */
+  ); 
      mask-image: radial-gradient(
     ellipse 50% 80% at 50% 50%,
     black 70%,
     transparent 100%
   );
-    } */
+    }  */
 
 
 nav, main {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
+}
+
+.nonetouch {
+  -webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
   </style>
@@ -124,17 +131,17 @@ nav, main {
   <!-- ========== メインパネル（白寄りすりガラス） ========== -->
   <div class="relative z-40 max-w-2xl mx-auto px-6 sm:px-12 py-8 bg-white/80 backdrop-blur-md rounded-2xl">
 
-    <header id="site-header" class="flex items-center justify-center pt-12 pb-16 px-4">
+<header id="site-header" class="flex items-center justify-center pt-12 pb-16 px-4">
   <div class="flex flex-col items-center gap-16 [writing-mode:vertical-rl]">
-  <p class="self-start anim-fade2 text-[1rem] font-bold tracking-[0.4em] text-gray-400">
+  <p class="self-start anim-fade2 text-[1rem] font-medium tracking-[0.1em] text-gray-700 nonetouch">
     劇団ケッペキ<br><span style="text-orientation: upright;">2026</span>年度新入生歓迎公演
   </p>
   <img src="logo.png" alt="海まで100年" id="logo"
-       class="anim-fade1 h-[60vh] max-h-[500px] w-auto">
-  <p class="self-end anim-fade3 text-[1rem] font-medium tracking-[0.3em] text-gray-700" style="text-align: right;">
+       class="anim-fade1 h-[35vh] max-h-[500px] w-auto">
+  <p class="self-end anim-fade3 text-[1rem] font-medium tracking-[0.1em] text-gray-700 nonetouch" style="text-align: right;">
     作｜笠木泉<br>演出｜北畠葵
   </p>
-</div>
+  </div>
 </header>
   
     </header>
@@ -143,10 +150,32 @@ nav, main {
 
       <!-- キャッチフレーズ -->
       <section class="py-16 text-center">
-       <p id="catchphrase" class="leading-relaxed"
-   style="font-size: clamp(0.9rem, 3.8vw, 1.25rem); white-space: nowrap;">
+       <p id="catchphrase" class="leading-relaxed nonetouch"
+   style="font-size: clamp(0.9rem, 3.8vw, 1.25rem); white-space: nowrap; font-feature-settings: palt 1;">
           『私の海』は、いったいどこのことだろう。
         </p>
+      </section>
+
+      <svg class="block mx-auto max-w-xl px-6" viewBox="0 0 1440 20" preserveAspectRatio="none" style="overflow:visible;">
+        <path d="M0 10 Q 720 20 1440 10" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
+      </svg>
+
+      <section id="news" class="py-6 scroll-mt-12">
+        <h2 class="font-bold text-black mb-4">お知らせ</h2>
+        <ul class="flex flex-col gap-4 text-sm">
+          <li class="flex gap-4">
+            <time class="text-gray-500 shrink-0">2026.03.05</time>
+            <span>チケット予約を開始しました</span>
+          </li>
+          <li class="flex gap-4">
+            <time class="text-gray-500 shrink-0">2026.03.05</time>
+            <span>公演チラシを公開しました</span>
+          </li>
+          <li class="flex gap-4">
+            <time class="text-gray-500 shrink-0">2026.03.05</time>
+            <span>公演情報を公開しました</span>
+          </li>
+        </ul>
       </section>
 
       <svg class="block mx-auto max-w-xl px-6" viewBox="0 0 1440 20" preserveAspectRatio="none" style="overflow:visible;">
@@ -220,8 +249,9 @@ nav, main {
           <p>舞台｜石橋啓輔　池田小春　植松佳楓　小林芯　これ→　徐夢遥</p>
           <p>音響｜どいよしと　綴喜舞　にこやか</p>
           <p>照明｜姿夜伊織　穴井陽　山内惇平</p>
+          <p>映像｜齊藤瑤平</p>
           <p>衣装小道具｜山田千鶴　田川小夏　西田花瑚</p>
-          <p>制作｜古家世渚　大倉小波　河野匠真　倉本和樹</p>
+          <p>制作｜古家世渚　大倉小波　倉本和樹　河野匠真</p>
           <p>宣伝美術｜早川凜　徐夢遥</p>
           <p>公演責任｜丸尾雄大</p>
           <p>公演会計｜西田花瑚</p>
@@ -233,6 +263,22 @@ nav, main {
       <svg class="block mx-auto max-w-xl px-6" viewBox="0 0 1440 20" preserveAspectRatio="none" style="overflow:visible;">
         <path d="M0 10 Q 720 20 1440 10" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>
       </svg>
+
+
+
+<!-- フライヤーセクション -->
+<section id="flyer" class="py-6 scroll-mt-12">
+  <h2 class="font-bold text-black mb-2">チラシ</h2>
+  <!-- サムネイル（クリックで拡大） -->
+  <div class="flex gap-3">
+    <img src="flyer.jpg" alt="フライヤー表面" 
+         onclick="document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lb-img').src=this.src;"
+         class="w-40 rounded-lg shadow-sm cursor-pointer hover:opacity-80 transition-opacity">
+    <!-- <img src="flyer_back.webp" alt="フライヤー裏面" 
+         onclick="document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lb-img').src=this.src;"
+         class="w-40 rounded-lg shadow-sm cursor-pointer hover:opacity-80 transition-opacity"> -->
+  </div>
+</section>
       
       <section id="sns" class="py-6 scroll-mt-12">
         <h2 class="font-bold text-black mb-4">SNS</h2>
@@ -288,8 +334,8 @@ nav, main {
         <a href="https://tally.so/r/4482kb" class="mt-3 mx-auto max-w-sm block text-center border border-gray-800 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition">
           <b>『海まで100年』ご予約</b>
         </a> 
-        <a href="#" class="mt-3 mx-auto max-w-sm block text-center border border-gray-800 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition">
-          <b>劇団ケッペキ 2026年度新歓 特設 Web サイト</b>
+        <a href="https://keppekisinkan2026.github.io" class="mt-3 mx-auto max-w-sm block text-center border border-gray-800 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition" style="word-break: keep-all;">
+          <b>劇団ケッペキ 2026年度新歓 特設 Web&nbsp;サイト</b>
         </a>
         <a href="https://keppeki.github.io" class="mt-3 mx-auto max-w-sm block text-center border border-gray-800 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition">
           <b>劇団ケッペキ 公式 Web サイト</b>
@@ -305,5 +351,16 @@ nav, main {
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="./100yearstothesea.js"></script>
+
+  <div id="lightbox" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+     onclick="if(event.target===this) this.classList.add('hidden');">
+  <!-- 閉じるボタン -->
+  <button onclick="document.getElementById('lightbox').classList.add('hidden');"
+          class="absolute top-6 right-6 text-white/70 hover:text-white text-2xl leading-none transition-colors"
+          aria-label="閉じる">✕</button>
+  <!-- 拡大画像 -->
+  <img id="lb-img" src="" alt="" 
+       class="max-w-[90vw] max-h-[90vh] rounded-xl object-contain">
+</div>
 </body>
 </html>
