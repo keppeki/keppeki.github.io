@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     /* セクション フェードイン */
@@ -66,6 +66,181 @@ nav, main {
 user-select: none;
 }
 
+/* ===== あらすじ横スクロール オーバーレイ ===== */
+#synopsis-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #0d1b2a;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  overflow: hidden;
+}
+#synopsis-overlay.open {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#synopsis-bg-img {
+  position: absolute;
+  inset: 0;
+  background: url('海100.webp') center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+#synopsis-overlay.open #synopsis-bg-img {
+  opacity: 0.25;
+}
+
+#synopsis-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(13,27,42,0.9) 0%,
+    rgba(13,27,42,0.45) 25%,
+    rgba(13,27,42,0.45) 75%,
+    rgba(13,27,42,0.9) 100%
+  );
+}
+
+/* スクロール領域（非表示スクロールバー） */
+#synopsis-scroll-area {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#synopsis-scroll-area::-webkit-scrollbar { display: none; }
+
+/* stickyコンテナ */
+#synopsis-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* 横スクロールトラック */
+#synopsis-track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  will-change: transform;
+  padding-left: 50vw;
+  gap: 5vw;
+}
+
+.synopsis-line {
+  flex-shrink: 0;
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  line-height: 2.2;
+  letter-spacing: 0.1em;
+  color: #d0d8e4;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  user-select: none;
+}
+.synopsis-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.synopsis-line.dim {
+  opacity: 0.2;
+  transform: translateY(0);
+}
+
+/* 最初の行（脚本からの引用）を特別扱い */
+.synopsis-line.is-first {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  color: #e8edf4;
+  letter-spacing: 0.14em;
+}
+
+/* 閉じるボタン */
+#synopsis-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 210;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.4s;
+  color: rgba(255,255,255,0.5);
+}
+#synopsis-overlay.open #synopsis-close {
+  opacity: 1;
+}
+#synopsis-close:hover {
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* スクロールヒント */
+#synopsis-hint {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.8s;
+  pointer-events: none;
+}
+#synopsis-overlay.open #synopsis-hint {
+  opacity: 1;
+}
+#synopsis-hint svg {
+  width: 12px;
+  height: 12px;
+  animation: synHintBounce 2.5s ease-in-out infinite;
+}
+@keyframes synHintBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* プログレスバー */
+#synopsis-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 210;
+  height: 2px;
+  width: 0%;
+  background: rgba(255,255,255,0.15);
+  transition: width 0.05s linear;
+  pointer-events: none;
+}
+
   </style>
 </head>
 
@@ -89,7 +264,7 @@ user-select: none;
   <div id="hero-overlay" class="fixed inset-0 z-30 bg-black opacity-0 pointer-events-none"></div>
   <!-- キャッチフレーズ -->
   <p id="hero-text" class="fixed z-40 text-gray-800 font-thin tracking-widest opacity-0 pointer-events-none" style="writing-mode: vertical-lr; white-space: nowrap; transform-origin: left top;">
-    『私の海』は、いったいどこのことだろう。
+    「私の海」は、いったいどこのことだろう。
   </p>
   <!-- スクロール促す矢印 -->
   <div id="hero-arrow" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 text-sm text-gray-400 transition-opacity duration-300 pointer-events-none">
@@ -148,12 +323,18 @@ user-select: none;
     
     <main>
 
-      <!-- キャッチフレーズ -->
+      <!-- キャッチフレーズ + あらすじ導線 -->
       <section class="py-16 text-center">
-       <p id="catchphrase" class="leading-relaxed nonetouch"
+       <!-- <p id="catchphrase" class="leading-relaxed nonetouch"
    style="font-size: clamp(0.9rem, 3.8vw, 1.25rem); white-space: nowrap; font-feature-settings: palt 1;">
           『私の海』は、いったいどこのことだろう。
-        </p>
+        </p> -->
+        <button id="synopsis-open"
+          class="mt-1 inline-flex items-center gap-1.5 text-xs tracking-[0.15em] text-gray-400 hover:text-gray-600 transition-colors duration-300 cursor-pointer bg-transparent border-none"
+          style="font-family: 'M PLUS Rounded 1c', sans-serif;">
+          <span>あらすじを読む</span>
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
       </section>
 
       <svg class="block mx-auto max-w-xl px-6" viewBox="0 0 1440 20" preserveAspectRatio="none" style="overflow:visible;">
@@ -320,7 +501,7 @@ user-select: none;
               <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
-              <span>g.keppeki@gmail.com</span>
+              <span><span class="__cf_email__" data-cfemail="75125b1e100505101e1c351218141c195b161a18">[email&#160;protected]</span></span>
             </a>
           </li>
         </ul>
@@ -349,7 +530,36 @@ user-select: none;
     </footer>
   </div>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- ========== あらすじ横スクロール オーバーレイ ========== -->
+  <div id="synopsis-overlay">
+    <div id="synopsis-bg-img"></div>
+    <div id="synopsis-gradient"></div>
+    <button id="synopsis-close" aria-label="閉じる">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div id="synopsis-hint">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+    </div>
+    <div id="synopsis-progress"></div>
+    <div id="synopsis-scroll-area">
+      <div id="synopsis-scroll-spacer">
+        <div id="synopsis-sticky">
+          <div id="synopsis-track">
+            <p class="synopsis-line is-first">「私の海」は、いったいどこのことだろう。</p>
+            <p class="synopsis-line">私たちは、旅をしている。</p>
+            <p class="synopsis-line">日々、を過ごしながら、旅をしている。</p>
+            <p class="synopsis-line">どうやら、目的地である「私の海」は、</p>
+            <p class="synopsis-line">遠く、遠くにあるらしい。</p>
+            <p class="synopsis-line" style="margin-left: 2vw;">……なら、一緒に行こうか。</p>
+            <p class="synopsis-line">きっと、それは、幸せなことだと思うから。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="./100yearstothesea.js"></script>
 
   <div id="lightbox" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
@@ -358,9 +568,8 @@ user-select: none;
   <button onclick="document.getElementById('lightbox').classList.add('hidden');"
           class="absolute top-6 right-6 text-white/70 hover:text-white text-2xl leading-none transition-colors"
           aria-label="閉じる">✕</button>
-  <!-- 拡大画像 -->
-  <img id="lb-img" src="" alt="" 
-       class="max-w-[90vw] max-h-[90vh] rounded-xl object-contain">
+  <img id="lb-img" src="" alt="" class="max-h-[85vh] max-w-[90vw] object-contain rounded-lg">
 </div>
+
 </body>
 </html>
