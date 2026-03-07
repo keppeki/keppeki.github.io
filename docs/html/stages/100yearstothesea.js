@@ -271,7 +271,7 @@ onScroll(); // 初期状態にも適用
     document.body.style.top = -savedScrollY + 'px';
     document.body.style.width = '100%';
 
-    // リセット
+    // 毎回全状態をリセット
     scrollArea.scrollTop = 0;
     track.style.transform = 'translateX(0)';
     progressBar.style.width = '0%';
@@ -286,14 +286,11 @@ onScroll(); // 初期状態にも適用
     });
     autoCloseTimer = null;
 
-    // display:noneからの表示→レイアウト確定後にsetup
-    overlay.style.display = 'block';
-    // 強制レイアウト（offsetHeightを読むことでブラウザにレイアウトを強制）
+    // openクラスを付与（visibility:visibleになる）
+    overlay.classList.add('open');
+    // openクラス付与後にレイアウト確定させてからsetup
     overlay.offsetHeight;
     setup();
-    requestAnimationFrame(() => {
-      overlay.classList.add('open');
-    });
 
     scrollArea.addEventListener('scroll', onSynopsisScroll);
   }
@@ -309,13 +306,6 @@ onScroll(); // 初期状態にも適用
       clearTimeout(autoCloseTimer);
       autoCloseTimer = null;
     }
-
-    // opacity transitionが終わったらdisplay:noneに
-    function onTransitionDone() {
-      overlay.style.display = 'none';
-      overlay.removeEventListener('transitionend', onTransitionDone);
-    }
-    overlay.addEventListener('transitionend', onTransitionDone);
 
     document.body.style.overflow = '';
     document.body.style.position = '';
