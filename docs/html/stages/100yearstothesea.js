@@ -21,7 +21,7 @@ menu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     if (window.innerWidth < 768) {
       btn.classList.remove('is-open');
-      menu.classList.add('opacity-0');
+      menu.classList.add('opacity-0')
       menu.addEventListener('transitionend', () => menu.classList.add('hidden'), { once: true });
     }
   });
@@ -38,7 +38,7 @@ const heroArrow   = document.getElementById('hero-arrow');
 const header      = document.getElementById('site-header');
 
 const SCROLL_END   = 400; // この値でアニメーション完了（px）
-const SCROLL_CLEAR = 400; // この値でヒーロー要素が完全に消える（px）
+const SCROLL_CLEAR = 600; // この値でヒーロー要素が完全に消える（px）
 
 // ヘッダーの位置を取得（スクロール後の吸収先）
 function getHeaderPos() {
@@ -164,7 +164,7 @@ onScroll(); // 初期状態にも適用
   function setup() {
     const scrollDistance = calcScrollDistance();
     // スクロール余白 = スクロール距離 + 画面1.5個分（末尾の余韻用）
-    spacer.style.height = (scrollDistance + window.innerHeight * 1.5) + 'px';
+    spacer.style.height = (scrollDistance + window.innerHeight * 2.5) + 'px';
   }
 
   // 線形補間
