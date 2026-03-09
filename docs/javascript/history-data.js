@@ -4,12 +4,21 @@
     {
       year: "2025年度",
       entries: [
+                {
+          intro: "劇団ケッペキ 2025年度卒業公演",
+          title: "『天使ちゃんたち』",
+          author: "作・演出 | 井出美唯奈",
+          date: "2026年3月6日（金）〜3月8日(日)",
+          place: "THEATRE E9 KYOTO",
+          img: "../images/02.main_flyer/2025/sotukou30/front.JPG",
+          imgAlt: "過去公演ビラ 2025 卒公"
+        },
         {
           intro: "いの一番の春一番!サンサン新人公演",
           title: "『あかるい夜にくらい朝がくる』",
           author: "作｜針を撫でる  演出｜どいよしと",
           date: "2026年2月20日（金）〜2月22日(日)",
-          place: "京都大学西部講堂",
+          place: "京都市東山青少年活動センター 創造活動室",
           img: "../images/02.main_flyer/2025/sinzin33/front.png",
           imgAlt: "過去公演ビラ 2025 新人"
         },
