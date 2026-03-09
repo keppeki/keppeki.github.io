@@ -164,7 +164,7 @@ onScroll(); // 初期状態にも適用
   function setup() {
     const scrollDistance = calcScrollDistance();
     // スクロール余白 = スクロール距離 + 画面1.5個分（末尾の余韻用）
-    spacer.style.height = (scrollDistance + window.innerHeight * 3) + 'px';
+    spacer.style.height = (scrollDistance + window.innerHeight * 4) + 'px';
   }
 
   // 線形補間

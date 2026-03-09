@@ -213,11 +213,11 @@ user-select: none;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.65rem;
+  font-size: 1rem;
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.3);
   opacity: 0;
-  transition: opacity 0.5s ease 0.8s;
+  transition: opacity 0.1s ease 0.1s;
   pointer-events: none;
 }
 #synopsis-overlay.open #synopsis-hint {
@@ -298,7 +298,7 @@ user-select: none;
     md:h-auto md:flex-row md:gap-6 md:text-xs md:py-3 
     md:justify-end md:max-w-2xl md:mx-auto md:px-4
     md:text-gray-500 md:tracking-widest md:font-light">
-    <li><a href="#datetime" class="block py-1 hover:text-gray-300 md:hover:text-gray-800">作品概要</a></li>
+    <li><a href="#note" class="block py-1 hover:text-gray-300 md:hover:text-gray-800">作品概要</a></li>
     <li><a href="#cast" class="block py-1 hover:text-gray-300 md:hover:text-gray-800">キャスト・スタッフ</a></li>
     <li><a href="#sns" class="block py-1 hover:text-gray-300 md:hover:text-gray-800">SNS</a></li>
     <li><a href="#reserve" class="block py-1 hover:text-gray-300 md:hover:text-gray-800">ご予約</a></li>
@@ -329,7 +329,7 @@ user-select: none;
     <main>
 
       <!-- キャッチフレーズ + あらすじ導線 -->
-      <section class="py-4 text-center">
+      <section id="note" class="py-4 text-center">
         <p class="leading-loose nonetouch text-sm" style="word-break: keep-all;">
           関西最大級の学生劇団、劇団ケッペキによる、<wbr>THEATRE&nbsp;E9&nbsp;KYOTOでの五度目の公演。<br>
 「『私の海』は、いったいどこのことだろう。」<br>
