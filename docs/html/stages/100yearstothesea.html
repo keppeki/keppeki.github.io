@@ -473,14 +473,14 @@ user-select: none;
 <section id="flyer" class="py-6 scroll-mt-12">
   <h2 class="font-bold text-black mb-2">チラシ</h2>
   <!-- サムネイル（クリックで拡大） -->
-  <div class="flex gap-3">
+  <div class="flex flex-wrap gap-3">
     <img src="表.jpg" alt="フライヤー表面" 
          onclick="document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lb-img').src=this.src;"
          class="w-40 rounded-lg shadow-sm cursor-pointer hover:opacity-80 transition-opacity">
     <img src="裏.jpg" alt="フライヤー裏面" 
          onclick="document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lb-img').src=this.src;"
          class="w-40 rounded-lg shadow-sm cursor-pointer hover:opacity-80 transition-opacity">
-         <img src="flyer.jpg" alt="フライヤー表面" 
+    <img src="flyer.jpg" alt="フライヤー表面" 
          onclick="document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lb-img').src=this.src;"
          class="w-40 rounded-lg shadow-sm cursor-pointer hover:opacity-80 transition-opacity">
   </div>
