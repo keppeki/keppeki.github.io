@@ -1,6 +1,21 @@
 // ...existing code...
 (() => {
   const data = [
+
+        {
+      year: "2026年度",
+      entries: [
+        {
+          intro: "劇団ケッペキ 2026年度新入生歓迎公演",
+          title: "『海まで100年』",
+          author: "作｜ 笠木 泉　演出｜ 北畠 葵",
+          date: "2026年4月25日（土）〜4月26日(日)",
+          place: "THEATRE E9 KYOTO",
+          img: "../images/02.main_flyer/2026/sinkan/front.jpeg",
+          imgAlt: "過去公演ビラ 2025 卒公"
+        }
+      ]
+    },
     {
       year: "2025年度",
       entries: [
