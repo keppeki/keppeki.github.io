@@ -6,6 +6,15 @@
       year: "2026年度",
       entries: [
         {
+          intro: "衣装ユニット　フリルが撫でる淡い指先公演",
+          title: "『ほころび』",
+          author: "作｜ 小林新　演出｜ 丸尾雄大",
+          date: "2026年6月12日（金）〜6月14日(日)",
+          place: "Social Kitchen 2階",
+          img: "../images/02.main_flyer/2026/isyo_frill/front.PNG",
+          imgAlt: "過去公演ビラ 2026 衣装"
+        },
+        {
           intro: "劇団ケッペキ 2026年度新入生歓迎公演",
           title: "『海まで100年』",
           author: "作｜ 笠木 泉　演出｜ 北畠 葵",
