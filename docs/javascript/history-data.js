@@ -6,6 +6,15 @@
       year: "2026年度",
       entries: [
         {
+          intro: "時めぐりときめく夏公演",
+          title: "『冬物語』(The Winter's Tale)",
+          author: "作｜ シェイクスピア　演出｜ 谷山笑",
+          date: "2026年9月29日（火）〜10月1日(木)",
+          place: "京都大学学生集会所地下２階 舞踏・民舞共用ホール",
+          img: "../images/02.main_flyer/2026/natsu/front.jpg",
+          imgAlt: "過去公演ビラ 2026 夏"
+        },
+        {
           intro: "衣装ユニット　フリルが撫でる淡い指先公演",
           title: "『ほころび』",
           author: "作｜ 小林新　演出｜ 丸尾雄大",
